@@ -7,10 +7,17 @@ class AppColors {
   static final greenDark = Color(0xFF133B34);
   static final white = Color(0xFFFFFFFF);
   static final black = Color(0xFF000000);
+  static final transparent = Colors.transparent;
 
   static final linearGradient = LinearGradient(
     colors: [AppColors.blue, AppColors.green],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
+  );
+  static final linearCard = LinearGradient(
+    colors: [AppColors.greenDark, AppColors.transparent],
+    stops: [0.2, 1],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
   );
 }
