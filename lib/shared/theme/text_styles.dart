@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TextStyles {
   static final title = GoogleFonts.kanit(
-    fontSize: 60,
+    fontSize: 50,
     fontWeight: FontWeight.w700,
     color: AppColors.blueText,
   );
   static final cardTitle = GoogleFonts.kanit(
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: FontWeight.w700,
     color: AppColors.white,
   );

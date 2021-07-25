@@ -16,7 +16,7 @@ class AppColors {
   );
   static final linearCard = LinearGradient(
     colors: [AppColors.greenDark, AppColors.transparent],
-    stops: [0.2, 1],
+    stops: [0.4, 1],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
