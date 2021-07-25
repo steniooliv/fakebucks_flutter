@@ -1,5 +1,6 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:fakebucks_flutter/shared/theme/app_colors.dart';
+import 'package:fakebucks_flutter/src/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,7 +13,8 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   Future delay() async {
     await Future.delayed(new Duration(seconds: 2));
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (_) => HomePage()));
   }
 
   @override
