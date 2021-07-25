@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-class ProductList {
+class ProductModel {
   int id;
   String name;
   String description;
   double value;
   String image;
 
-  ProductList({
+  ProductModel({
     required this.id,
     required this.name,
     required this.description,
@@ -15,14 +15,14 @@ class ProductList {
     required this.image,
   });
 
-  ProductList copyWith({
+  ProductModel copyWith({
     int? id,
     String? name,
     String? description,
     double? value,
     String? image,
   }) {
-    return ProductList(
+    return ProductModel(
       id: id ?? this.id,
       name: name ?? this.name,
       description: description ?? this.description,
@@ -41,8 +41,8 @@ class ProductList {
     };
   }
 
-  factory ProductList.fromMap(Map<String, dynamic> map) {
-    return ProductList(
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
       id: map['id'],
       name: map['name'],
       description: map['description'],
@@ -53,19 +53,19 @@ class ProductList {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductList.fromJson(String source) =>
-      ProductList.fromMap(json.decode(source));
+  factory ProductModel.fromJson(String source) =>
+      ProductModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'ProductList(id: $id, name: $name, description: $description, value: $value, image: $image)';
+    return 'ProductModel(id: $id, name: $name, description: $description, value: $value, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is ProductList &&
+    return other is ProductModel &&
         other.id == id &&
         other.name == name &&
         other.description == description &&
