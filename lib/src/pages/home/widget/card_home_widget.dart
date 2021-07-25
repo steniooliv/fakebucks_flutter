@@ -8,6 +8,7 @@ class CardHomeWidget extends StatefulWidget {
   String textTitle;
   String textCard;
   String value;
+  void Function() onTap;
 
   CardHomeWidget({
     Key? key,
@@ -15,6 +16,7 @@ class CardHomeWidget extends StatefulWidget {
     required this.textTitle,
     required this.textCard,
     required this.value,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -42,7 +44,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
                 child: Container(
                   child: Image.asset(
                     "assets/images/${widget.imageName}.png",
-                    height: 100,
+                    width: MediaQuery.of(context).size.width / 4.5,
                   ),
                 ),
               ),
@@ -54,9 +56,12 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            '${widget.textTitle}',
-                            style: TextStyles.cardTitle,
+                          Expanded(
+                            child: Text(
+                              '${widget.textTitle}',
+                              style: TextStyles.cardTitle,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           )
                         ],
                       ),
@@ -82,9 +87,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/cart');
-                      },
+                      onPressed: widget.onTap,
                       icon: Icon(
                         Icons.shopping_cart,
                         size: 40,

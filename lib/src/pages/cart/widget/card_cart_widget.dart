@@ -8,6 +8,9 @@ class CardCartWidget extends StatefulWidget {
   String textTitle;
   String quantity;
   String value;
+  void Function() addItem;
+  void Function() removeItem;
+  void Function() removeAll;
 
   CardCartWidget({
     Key? key,
@@ -15,6 +18,9 @@ class CardCartWidget extends StatefulWidget {
     required this.textTitle,
     required this.quantity,
     required this.value,
+    required this.addItem,
+    required this.removeItem,
+    required this.removeAll,
   }) : super(key: key);
 
   @override
@@ -42,7 +48,7 @@ class _CardCartWidgetState extends State<CardCartWidget> {
                 child: Container(
                   child: Image.asset(
                     "assets/images/${widget.imageName}.png",
-                    height: 100,
+                    width: MediaQuery.of(context).size.width / 4.5,
                   ),
                 ),
               ),
@@ -58,10 +64,13 @@ class _CardCartWidgetState extends State<CardCartWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            '${widget.textTitle}',
-                            style: TextStyles.cardTitle,
-                            textAlign: TextAlign.center,
+                          Expanded(
+                            child: Text(
+                              '${widget.textTitle}',
+                              style: TextStyles.cardTitle,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           )
                         ],
                       ),
@@ -87,7 +96,7 @@ class _CardCartWidgetState extends State<CardCartWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: widget.removeItem,
                               icon: Icon(
                                 Icons.remove_circle,
                                 color: AppColors.white,
@@ -102,7 +111,7 @@ class _CardCartWidgetState extends State<CardCartWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: widget.addItem,
                               icon: Icon(
                                 Icons.add_circle,
                                 color: AppColors.white,
@@ -121,7 +130,7 @@ class _CardCartWidgetState extends State<CardCartWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: widget.removeAll,
                       icon: Icon(
                         Icons.remove_shopping_cart,
                         size: 40,
